@@ -13,7 +13,6 @@ Windows Features turned on:
 
 Windows only differs by how the volumes are set in the Docker-compose file. in a Linux based system you have to state the Volumes but windows will error out while building the SQL and MongoDB containers as it will be trying to dynamically create the volumes rather than build of stated types:
 
-I tried changing the file path to a windows based style but all attempts were met with the same error.
 e.g:
 
   ````

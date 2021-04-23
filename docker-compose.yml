@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.8'
 
 services:
   php:
@@ -13,10 +13,9 @@ services:
  
   db:
     image: mysql:5.7
+    command: ["mysqld", "--ignore-db-dir=lost+found", "--explicit_defaults_for_timestamp"]
     ports:
       - 127.0.0.1:3306:3306
-    volumes:
-      - ./db:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
     restart: unless-stopped

@@ -1,6 +1,42 @@
 # docker-image
 
-Start by creating the following directory
+## Prerequistes 
+
+Windows Enterprise / Pro
+
+Windows Features turned on:
+Hyper-v, windows subsystem linux, Virtual machine platform, windows sandbox
+
+
+Windows only differs by how the volumes are set in the Docker-compose file. in a Linux based system you have to state the Volumes but windows will error out while building the SQL and MongoDB containers as it will be trying to dynamically create the volumes rather than build of stated types:
+
+I tried changing the file path to a windows based style but all attempts were met with the same error.
+e.g:
+
+  ````
+  db:
+    image: mysql:5.7
+    ports:
+      - 127.0.0.1:3306:3306
+    volumes:  <----
+      - ./db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:4.2.8
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - 27017:27017
+    volumes: <----
+      - ./mongodb:/data/db
+    restart: unless-stopped
+    ````
+
+Start by creating the following directory:
 
 ```
 ~/sites/academyServer

@@ -1,6 +1,7 @@
 # docker-image
 
 ## Prerequistes 
+WSL 2
 
 Windows Enterprise / Pro
 
@@ -11,7 +12,7 @@ Windows Features turned on:
 * windows sandbox
 
 
-Windows only differs by how the volumes are set in the Docker-compose file. in a Linux based system you have to state the Volumes but windows will error out while building the SQL and MongoDB containers as it will be trying to dynamically create the volumes rather than build off stated types:
+Windows only differs by how the volumes are set in the Docker-compose file. in a Linux based system you have to state the Volumes but windows will error out while building the SQL container as it will be trying to dynamically create the volumes rather than build off stated types:
 
 e.g:
 
@@ -24,17 +25,6 @@ e.g:
       - ./db:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
-    restart: unless-stopped
-
-  mongodb:
-    image: mongo:4.2.8
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
-    ports:
-      - 27017:27017
-    volumes: <----
-      - ./mongodb:/data/db
     restart: unless-stopped
    ````
 All other steps are correct (he says)

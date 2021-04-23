@@ -34,7 +34,7 @@ e.g:
     volumes: <----
       - ./mongodb:/data/db
     restart: unless-stopped
-    ````
+   ````
 
 Start by creating the following directory:
 

@@ -35,6 +35,7 @@ e.g:
       - ./mongodb:/data/db
     restart: unless-stopped
    ````
+All other steps are correct (he says)
 
 Start by creating the following directory:
 
